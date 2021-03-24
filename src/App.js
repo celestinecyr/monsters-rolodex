@@ -3,59 +3,51 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-constructor() {
-  super();
+  constructor() {
+    super();
 
-  this.state={
-    stringDisplay: 'Hello Celestine'
+    this.state={
+      monsters: [
+        {
+          name: 'Frankenstein',
+          id: 'mon1'
+        },
+        {
+          name: 'Dracular',
+          id: 'mon2'
+        },
+        {
+          name: 'Zombie',
+          id: 'mon3'
+        }
+      ]
+    };
   }
-}
 
-  render() {                                                  //render method; we have access to the render method in a class component
-    return(                                                   //html goes in here
-      <div className="App">                                   {/* JSX uses the syntax of className to distinguish between a HTML class, vs a class in JS (line 5)  */}
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />    {/* Whatever that's inside the {} is a javascript expression - logo is a variable which we imported */}
+  render() {                                                  
+    return(                                                  
+      <div className="App">                                  
+        {this.state.monsters.map(monster => (
+          <h1 key={monster.id}> { monster.name } </h1>           //need unique key because react needs to know what element needs updating, if one of the element in the array has a value that is gna change
+        ))}      
         
-        {/* <p>Hello Celest</p> */}
-        <p>{this.state.stringDisplay}</p>                     {/* this.state.stringDisplay is also a variable which is referring to a particular state.It's a js expression, something that produces a value */}
-        <button onClick={() => this.setState({ stringDisplay: 'Hello Chris' })}>Change Text</button>
-      </header>
-    </div>
+        {/* 
+          Map returns us the return of whatever function we passed to it iterated over every element in this array
+          Map takes the function where the first argument is going to be the actual element that this function is going to get called on
+          usually its a new array when we call map but react is smart enough to know that if we end up rendering out a bunch of html blocks
+          right in an array then it'll just display those elements.
+        */}
+
+        {/* Note:
+          A good rule of thumb as to when to use the key attribute you saw in the previous video, is this: Anytime you use the map() function inside of render, 
+          or you have a list of the same jsx elements one after another, they need a key attribute (and CRA will warn you about it if you miss it)
+
+          Appendix 
+         */}
+      </div>
     )
   }
 
-  /* when button is clicked, react intercepts because react is the one 'talking' to the DOM
-  so it will intercept that click and it's going to report back that it got clicked on the DOM
-  Then here we are coding that: when click happens, we want to update the state
-  but we're not going to modify the state automatically. 
-  When state is updated, render() method re-renders.
-
-  JSX - js mimicking html so that we can create that virtual DOM and breakdown each part of the app into these components
-  e.g. html: onclick vs js: onClick (Camel Case)
-  */
 }
 
 export default App;
-
-
-/* older versions of c-r-a started with class components instead of function components 
-function App() {          //function component; function called App that returns a block of html 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-*/

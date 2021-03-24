@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+class AppEg extends Component {
 constructor() {
   super();
 
@@ -36,7 +36,7 @@ constructor() {
   */
 }
 
-export default App;
+export default AppEg;
 
 
 /* older versions of c-r-a started with class components instead of function components 
