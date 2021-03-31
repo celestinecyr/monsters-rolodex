@@ -29,11 +29,7 @@ class App extends Component {
         <input type='search' 
           placeholder='Search Monsters' 
           // onChange={ event => console.log(event.target.value) }
-          onChange={ event => {
-            this.setState({ searchField: event.target.value }, () => console.log(this.state)) 
-            //However, we realise that our state is always updated but 1 letter behind. This is because state is in a async function call. 
-            //-> Thats why we add callback func as the second argument! console log at callback func instead of the next line. cuz then it'll get called right after setState
-          }}
+          onChange={ e => this.setState({ searchField: e.target.value }) } 
         />     {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
         <CardList monsters={this.state.monsters} />               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
       </div>
