@@ -1,11 +1,12 @@
 import React from 'react';
+import './card-list.styles.css';
 
 export const CardList = (props) => {
     console.log(props);                     //prints: Hey, im passing in a prop  [App.js line 28]
     
     return(
-        <div>
-            Hello, {props.children}
+        <div className='card-list'>
+            {props.children}
         </div>
     )
 }
