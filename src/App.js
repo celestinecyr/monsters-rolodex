@@ -25,12 +25,7 @@ class App extends Component {
   render() {                                                  
     return(   
       <div className="App"> 
-        <CardList name='Card List Props'>   
-          {this.state.monsters.map(monster => (
-            <h1 key={monster.id}> { monster.name } </h1>           //need unique key because react needs to know what element needs updating, if one of the element in the array has a value that is gna change
-          ))}
-        </CardList>            {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                    
-             
+        <CardList monsters={this.state.monsters} />            {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
       </div>
     )
   }

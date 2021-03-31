@@ -1,12 +1,16 @@
 import React from 'react';
+import { Card } from '../card/card.component';
 import './card-list.styles.css';
 
 export const CardList = (props) => {
-    console.log(props);                     //prints: Hey, im passing in a prop  [App.js line 28]
+    //console.log(props);                     //prints: Hey, im passing in a prop  [App.js line 28]
     
     return(
         <div className='card-list'>
-            {props.children}
+            {props.monsters.map(monster => (
+                //<h1 key={monster.id}> {monster.name}</h1>
+                <Card key={monster.id} monster={monster} />             //passing monster into the Card Component
+            ))}
         </div>
     )
 }
