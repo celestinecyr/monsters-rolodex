@@ -10,3 +10,14 @@ This state is then passed down to the CardList Component (like an attribute) - j
 As soon as we pass our state down to a component, this component receives it as a prop.
 
 State usually lives in just ONE LOCATION or a SPECIFIC STATE only on one location and it trickles down as props
+
+3) Asynchronous vs Synchronous
+- Synchronous action: 
+something that we can expect to happen almost immediately. It's something that pretty much happens and JavaScript knows the amount of time it'll take so javascript
+will wait for that thing to finish before it continues.
+
+- Asynchronous action:
+Running the rest of the code afterwards an asynchronous action or event is something that actually takes
+an indefinite amount of time that JavaScript does not know.
+So what it does is it actually runs the rest of the code after and then when the asynchronous event
+finishes it then runs that finished event.

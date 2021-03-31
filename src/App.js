@@ -7,8 +7,9 @@ class App extends Component {
     super();
 
     this.state={
-      monsters: []     //{name: 'Frankenstein', id: 'mon1'}, {name: 'Dracular',id: 'mon2'},{name: 'Zombie',id: 'mon3'}
+      monsters: [],     //{name: 'Frankenstein', id: 'mon1'}, {name: 'Dracular',id: 'mon2'},{name: 'Zombie',id: 'mon3'}
     //empty array ^, we don't wanna hard code this anymore. Now, we're just going to wait for our component to mount and then fetch all the
+      searchField: ''   //SEARCHFEATURE #2: whenever the user store sth in input we need to store that string, into our state -> then we can use it to filter out our monsters
     };
   }
 
@@ -25,6 +26,15 @@ class App extends Component {
   render() {                                                  
     return(   
       <div className="App"> 
+        <input type='search' 
+          placeholder='Search Monsters' 
+          // onChange={ event => console.log(event.target.value) }
+          onChange={ event => {
+            this.setState({ searchField: event.target.value }, () => console.log(this.state)) 
+            //However, we realise that our state is always updated but 1 letter behind. This is because state is in a async function call. 
+            //-> Thats why we add callback func as the second argument! console log at callback func instead of the next line. cuz then it'll get called right after setState
+          }}
+        />     {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
         <CardList monsters={this.state.monsters} />               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
       </div>
     )
