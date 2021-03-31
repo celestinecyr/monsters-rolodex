@@ -7,8 +7,8 @@ class App extends Component {
     super();
 
     this.state={
-      monsters: []  //{name: 'Frankenstein', id: 'mon1'}, {name: 'Dracular',id: 'mon2'},{name: 'Zombie',id: 'mon3'}
-      //empty array ^, we don't wanna hard code this anymore. Now, we're just going to wait for our component to mount and then fetch all the
+      monsters: []     //{name: 'Frankenstein', id: 'mon1'}, {name: 'Dracular',id: 'mon2'},{name: 'Zombie',id: 'mon3'}
+    //empty array ^, we don't wanna hard code this anymore. Now, we're just going to wait for our component to mount and then fetch all the
     };
   }
 
@@ -25,7 +25,7 @@ class App extends Component {
   render() {                                                  
     return(   
       <div className="App"> 
-        <CardList monsters={this.state.monsters} />            {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
+        <CardList monsters={this.state.monsters} />               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
       </div>
     )
   }

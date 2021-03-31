@@ -4,4 +4,9 @@ Remember to use the back tick  ` and NOT regular single or double quotes (' and 
 on our image src. This is an easy mistake to make as you cannot interpolate the strings when using regular quotes, 
 you must use back ticks!
 
+2) State vs Props
+In this project, our Parent Component is App.js, and only here, we have state (something that changes bc of user interaction).
+This state is then passed down to the CardList Component (like an attribute) - just like how we have HTML attributes, we sent down monsters and give it our state
+As soon as we pass our state down to a component, this component receives it as a prop.
 
+State usually lives in just ONE LOCATION or a SPECIFIC STATE only on one location and it trickles down as props
