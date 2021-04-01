@@ -23,3 +23,72 @@ So what it does is it actually runs the rest of the code after and then when the
 finishes it then runs that finished event.
 
 4) HTML Synthetic Events - html onchange vs jsx onchange (they're different, and we use jsx)
+
+5) ARRAY METHOD - filter()
+Example:
+const myArray = [ 1, 3, 5, 7, 9]
+< undefined
+
+myArray.filter( el => el > 4 )              // whatever is > 4 (TRUE), will be KEPT in the modified myArray
+< (3) [5, 7, 9]                             // FALSE, delete
+
+myArray.filter( el => true )                //we get back everything if we just return true 
+< (5) [ 1, 3, 5, 7, 9]
+
+myArray.filter( el => false )                
+< []
+
+myArray                                     //original
+< (5) [ 1, 3, 5, 7, 9]
+
+6) ARRAY METHOD - includes()
+The other array methods that we've covered so far includes is essentially a method that takes a single argument 
+and that argument will be any element that we want and what it does is it checks inside the
+array to see if the element that we passed it exists in our array.
+Example:
+const myArray = [ 1, 2, 3, 4, 5]
+< undefined
+
+myArray.includs(3)
+< true
+myArray.includs(9)
+< false
+
+//The second argument that we could take in is the index, in which we want to start searching from
+myArray.includs(2, 3)           //checking whether the value 2 exists, starting from index 3
+< false
+myArray.includs(2, 1)
+< true
+
+const newArray = [{id:1}, {id:2}, {id:3}]
+< undefined
+newArray.includes({id:2})
+< false                             //false because of the way javascript references objects vs primitive types
+
+const obj1 = { id:1 }
+< undefined
+const obj2 = { id:1 }
+< undefined
+obj1 === obj2
+< false                             //because what js is comparing is, if the reference in memory is the same. It's not comparing whether or not this value of this object is equal to each other.
+                                    //It's comparing if they're both pointing to the same place in memory this only works if we were to do
+//but if we were to do this:
+const obj3 = obj2                   //Now both obj3 & obj2 are pointing to the same object in memory
+< undefined
+obj3
+< { id:1 }                            //now obj3 is pointing to { id:1 }
+
+//Now if we change obj2 to sth else, obj3 will remain as { id:1 }
+obj2.id = 17
+< 17
+obj2 
+< { id:17 }
+obj3
+< { id:1 }
+
+7) Primitive types (string, boolean, null, undefined, number, symbol)
+These primitive types are all stored inside javascript's memory bank.
+When we set a constant or var equal to a primitive type, e.g. the number 3 (var a = 3), 
+what js is doing is its setting/creating a new variable that we want called a, and its pointing its value to the number 3 in its memory so its actually pointing to 3 in its memory
+
+methods are properties that points to functions
