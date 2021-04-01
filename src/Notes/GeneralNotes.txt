@@ -21,3 +21,5 @@ Running the rest of the code afterwards an asynchronous action or event is somet
 an indefinite amount of time that JavaScript does not know.
 So what it does is it actually runs the rest of the code after and then when the asynchronous event
 finishes it then runs that finished event.
+
+4) HTML Synthetic Events - html onchange vs jsx onchange (they're different, and we use jsx)

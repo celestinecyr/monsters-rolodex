@@ -23,15 +23,33 @@ class App extends Component {
     }
 
 
-  render() {                                                  
+  render() {     
+    /*Destructuring concept - allows us to pull properties of an obj and set them to constants that we put inside {}:
+    we use the same property name that we want to set as the constant (line 10 & 12) 
+    This pulls off the monsters and searchField value off our state obj and setting them to constants called monsters and searchField
+    */
+    const { monsters, searchField } = this.state;
+    /*This is equivalent to:
+    const monsters = this.state.monsters
+    const searchField = this.state.searchField */
+    const filteredMonsters = monsters.filter(monster => 
+      monster.name.toLowerCase().includes(searchField.toLowerCase())        
+    )
+    /*Using the filter method, we get back a new array based off the function that we pass into it, where we'll get the monster that is currently being iterated.
+    Then, we take the name and use toLowerCase bc we dw it to be case sensitive. 
+    includes() method is similar to array method, it checks whether or not the string value we pass inside of our includes is actually in the string
+    includes() returns TRUE or FALSE
+    */
+    
     return(   
       <div className="App"> 
         <input type='search' 
           placeholder='Search Monsters' 
           // onChange={ event => console.log(event.target.value) }
           onChange={ e => this.setState({ searchField: e.target.value }) } 
-        />     {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
-        <CardList monsters={this.state.monsters} />               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
+        />                                                        {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
+        {/*<CardList monsters={this.state.monsters} /> */}               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
+        <CardList monsters={filteredMonsters} />
       </div>
     )
   }
