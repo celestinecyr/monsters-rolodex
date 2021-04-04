@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component';
+
 import './App.css';
 
 class App extends Component {
@@ -43,11 +46,7 @@ class App extends Component {
     
     return(   
       <div className="App"> 
-        <input type='search' 
-          placeholder='Search Monsters' 
-          // onChange={ event => console.log(event.target.value) }
-          onChange={ e => this.setState({ searchField: e.target.value }) } 
-        />                                                        {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
+        <SearchBox placeholder="search monsters" handleChange={e => this.setState({ searchField: e.target.value })}/>                                                     {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
         {/*<CardList monsters={this.state.monsters} /> */}               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
         <CardList monsters={filteredMonsters} />
       </div>
