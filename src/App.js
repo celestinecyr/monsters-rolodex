@@ -12,7 +12,7 @@ class App extends Component {
     this.state={
       monsters: [],     //{name: 'Frankenstein', id: 'mon1'}, {name: 'Dracular',id: 'mon2'},{name: 'Zombie',id: 'mon3'}
     //empty array ^, we don't wanna hard code this anymore. Now, we're just going to wait for our component to mount and then fetch all the
-      searchField: ''   //SEARCHFEATURE #2: whenever the user store sth in input we need to store that string, into our state -> then we can use it to filter out our monsters
+      searchField: ''   //SEARCHFEATURE: whenever the user store sth in input we need to store that string, into our state -> then we can use it to filter out our monsters
     };
   }
 
@@ -24,7 +24,10 @@ class App extends Component {
     //.then(users => console.log(users))
     .then(users => this.setState({ monsters: users }));                           //now we call setState as we did before; but now we set monsters to user array
     }
-
+  
+  handleChange= (e) => {
+    this.setState({ searchField: e.target.value })
+  }
 
   render() {     
     /*Destructuring concept - allows us to pull properties of an obj and set them to constants that we put inside {}:
@@ -46,7 +49,7 @@ class App extends Component {
     
     return(   
       <div className="App"> 
-        <SearchBox placeholder="search monsters" handleChange={e => this.setState({ searchField: e.target.value })}/>                                                     {/* SEARCHFEATURE #1: When we use type search, there'll be a small x button to clear your inputs */}
+        <SearchBox placeholder="search monsters" handleChange={this.handleChange}/>                                                     
         {/*<CardList monsters={this.state.monsters} /> */}               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
         <CardList monsters={filteredMonsters} />
       </div>

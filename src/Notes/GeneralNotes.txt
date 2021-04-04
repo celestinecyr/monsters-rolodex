@@ -92,3 +92,21 @@ When we set a constant or var equal to a primitive type, e.g. the number 3 (var 
 what js is doing is its setting/creating a new variable that we want called a, and its pointing its value to the number 3 in its memory so its actually pointing to 3 in its memory
 
 methods are properties that points to functions
+
+8) 'this' keyword
+this is a special keyword in js that references the context in which it's being invoked
+- When we type this.state, we're trying to reference the state on our class component.
+- When we're calling this.state, JavaScript is able to understand that we want the state object on our component because
+'this' keyword is set to the context of our class component.
+
+- However, in JS, when we write our own class methods (i.e. method() {...}, like componentDidMount(){}), we see that the 'this' keyword gets bound differently depending on how we write the class method.
+- When we call super(), we're actually extending the functionality that exists on the component
+
+- e.g. if we type handleChange(e) { this.setState... } outside render, there'll be an error and setState is undefined. We need to bind it in constructor
+- dot bind is a method on any function that returns a new function where the context of 'this' is set to whatever we passed to it and 
+the context of 'this' that we're setting in handleChange right here is the this keyword that is defined inside of our constructor which knows that it's our component
+- BUT this.handleChange = this.handleChange.bind(this) is a v verbose way of writing, instead, we can simply use ES6 to bind.
+    handleChange= (e) => {
+        this.setState({ searchField: e.target.value })
+    }
+- the context of the arrow function is our app component, so it will automatically bind. Lexical scoping --> they bind this context to where it was defined in the first place.
