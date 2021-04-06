@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
-import { EventBinding } from './Notes/EventBinding'
+
 import './App.css';
 
 class App extends Component {
@@ -49,10 +49,10 @@ class App extends Component {
     
     return(   
       <div className="App"> 
-        {/* <SearchBox placeholder="search monsters" handleChange={this.handleChange}/>                                                      */}
+        <h1> Monsters Rolodex</h1>
+        <SearchBox placeholder="search monsters" handleChange={this.handleChange}/>                                                     
         {/*<CardList monsters={this.state.monsters} /> */}               {/* The prop is gg to be an obj of any properties that i write onto this component where it gets used*/}                                                                      
-        {/* <CardList monsters={filteredMonsters} /> */}
-        <EventBinding />
+        <CardList monsters={filteredMonsters} />
       </div>
     )
   }
