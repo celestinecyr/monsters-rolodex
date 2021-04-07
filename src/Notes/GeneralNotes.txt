@@ -110,3 +110,22 @@ the context of 'this' that we're setting in handleChange right here is the this 
         this.setState({ searchField: e.target.value })
     }
 - the context of the arrow function is our app component, so it will automatically bind. Lexical scoping --> they bind this context to where it was defined in the first place.
+
+9) How to update packages:
+(a) Check what version of whatever packages that you want to upgrade and is currently running
+(b) Go to your terminal - npm ls react react-dom react-scripts  
+    [e.g. if we know that react and react-dom can be upgraded further, instead of directly modifying the value on terminal,
+    we can go to package.json --> so that we make sure that, whenever we want to upgrade we can always use the latest version]
+(c) Go to package.json, inside dependencies we have react and react-dom
+    [if you created this using cra, you might see a ^ carrot sign infront of your version - this is a rule that tells whatever
+    packge manager we're using (yarn or NPM), whenever we see npm upgrade, it will upgrade to the latest stable non breaking version
+    however, without ^, whenever u run npm install it'll only run the exact version u have there.]
+
+    [however, if we simply edit package.json and then run npm upgrade, we will see an Outdated lockfile --> type npm install]
+
+    [what is this lock file?]
+    
+    [npm list react react-dom react-scripts]
+    [npm update]                                                //different from npm install, install will skip versions if there's no major updates
+    > updated versions... found 0 vulnerabilities               //what are vulnerabilities? major/minor security concerns -- has to do with either a dependency installed/ a dependency that your packages depend
+    [npm audit fix]                                             //to fix vulnerabilities and this command will go thru and update the versions to a version of a package where it doesnt have the security concern anymore (different for yarn, not so ez - need to do it manually)
